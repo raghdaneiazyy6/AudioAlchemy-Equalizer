@@ -14,15 +14,15 @@ AudioAlchemy Equalizer empowers you to shape your soundscapes like never before.
    Dive into the heart of your signals with precision control over individual frequency components. The application offers multiple modes catering to diverse needs:
    
     - **Uniform Range Mode:** Divide and conquer the entire frequency spectrum with 10 intuitive sliders.
-    - **Musical Instruments Mode:** Sculpt the nuances of each instrument in a symphony of sound.
+    - **Musical Instruments Mode:** Sculpt the nuances of each instrument into a symphony of sound.
     - **Animal Sounds Mode:** Explore the wild side by adjusting the magnitudes of distinct animal voices.
     - **ECG Abnormalities Mode:** An invaluable tool for medical professionals, allowing the manipulation of arrhythmia components in ECG signals.
   
   - ### Crafted for Intuitive Interaction
-    The user interface seamlessly adapts to different modes, ensuring a smooth and intuitive experience. Effortlessly switch between modes through an elegant menu or combobox, maintaining a consistent and user-friendly design.
+    The user interface seamlessly adapts to different modes, ensuring a smooth and intuitive experience. Effortlessly switch between modes through an elegant menu or combo box, maintaining a consistent and user-friendly design.
    
  - ### Visualize and Customize
-   Witness the magic unfold with two linked cine signal viewers, providing a dynamic view of input and output signals. Real-time spectrograms offer a visual feast, reflecting changes in frequency components instantly. Choose from four versatile windows (Rectangle, Hamming, Hanning, Gaussian) to add that extra touch of finesse to your audio manipulations.
+    Witness the magic unfold with two linked cine-signal viewers, providing a dynamic view of input and output signals. Real-time spectrograms offer a visual feast, reflecting changes in frequency components instantly. Choose from four versatile windows (Rectangle, Hamming, Hanning, and Gaussian) to add that extra touch of finesse to your audio manipulations.
 
 
 
@@ -32,7 +32,7 @@ To embark on your audio journey with AudioAlchemy Equalizer, follow the steps ou
 
 ## Demo
 
-Curious to see the magic in action? Watch our mesmerizing [Demo Video](link/to/demo/video) and experience the transformative power of AudioAlchemy Equalizer.
+Curious to see the magic in action? Watch our demo video and experience the transformative power of our Equalizer.
 
 ## Contributors
 

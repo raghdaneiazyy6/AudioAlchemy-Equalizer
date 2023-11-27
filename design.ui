@@ -115,6 +115,9 @@ color: rgb(66, 111, 111);</string>
            </property>
            <item row="0" column="0">
             <layout class="QVBoxLayout" name="frequencyLayout">
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
              <item>
               <widget class="QWidget" name="frequencyWidget" native="true">
                <property name="styleSheet">
@@ -129,6 +132,9 @@ color: rgb(66, 111, 111);</string>
              <property name="sizeConstraint">
               <enum>QLayout::SetMinimumSize</enum>
              </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
              <item>
               <spacer name="horizontalSpacer_3">
                <property name="orientation">
@@ -140,34 +146,43 @@ color: rgb(66, 111, 111);</string>
                <property name="sizeHint" stdset="0">
                 <size>
                  <width>5</width>
-                 <height>20</height>
+                 <height>5</height>
                 </size>
                </property>
               </spacer>
              </item>
              <item>
               <layout class="QVBoxLayout" name="layout_1">
+               <property name="spacing">
+                <number>6</number>
+               </property>
                <item>
                 <widget class="QLabel" name="label_1">
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
-                   <height>20</height>
+                   <height>15</height>
                   </size>
                  </property>
                  <property name="font">
                   <font>
-                   <pointsize>10</pointsize>
+                   <pointsize>8</pointsize>
                    <bold>true</bold>
                   </font>
                  </property>
                  <property name="text">
                   <string>0 - 10 Hz</string>
                  </property>
+                 <property name="indent">
+                  <number>7</number>
+                 </property>
                 </widget>
                </item>
                <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_6">
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
                  <item>
                   <spacer name="horizontalSpacer_7">
                    <property name="orientation">
@@ -179,7 +194,7 @@ color: rgb(66, 111, 111);</string>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>5</width>
-                     <height>20</height>
+                     <height>5</height>
                     </size>
                    </property>
                   </spacer>
@@ -226,7 +241,7 @@ color: rgb(66, 111, 111);</string>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>5</width>
-                     <height>20</height>
+                     <height>5</height>
                     </size>
                    </property>
                   </spacer>
@@ -243,8 +258,8 @@ color: rgb(66, 111, 111);</string>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>40</width>
-                   <height>15</height>
+                   <width>50</width>
+                   <height>12</height>
                   </size>
                  </property>
                 </widget>
@@ -258,17 +273,20 @@ color: rgb(66, 111, 111);</string>
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
-                   <height>20</height>
+                   <height>15</height>
                   </size>
                  </property>
                  <property name="font">
                   <font>
-                   <pointsize>10</pointsize>
+                   <pointsize>8</pointsize>
                    <bold>true</bold>
                   </font>
                  </property>
                  <property name="text">
                   <string>10 - 20 Hz</string>
+                 </property>
+                 <property name="indent">
+                  <number>7</number>
                  </property>
                 </widget>
                </item>
@@ -285,7 +303,7 @@ color: rgb(66, 111, 111);</string>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>5</width>
-                     <height>20</height>
+                     <height>5</height>
                     </size>
                    </property>
                   </spacer>
@@ -332,7 +350,7 @@ color: rgb(66, 111, 111);</string>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>5</width>
-                     <height>20</height>
+                     <height>5</height>
                     </size>
                    </property>
                   </spacer>
@@ -349,8 +367,8 @@ color: rgb(66, 111, 111);</string>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>40</width>
-                   <height>15</height>
+                   <width>50</width>
+                   <height>12</height>
                   </size>
                  </property>
                 </widget>
@@ -364,17 +382,20 @@ color: rgb(66, 111, 111);</string>
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
-                   <height>20</height>
+                   <height>15</height>
                   </size>
                  </property>
                  <property name="font">
                   <font>
-                   <pointsize>10</pointsize>
+                   <pointsize>8</pointsize>
                    <bold>true</bold>
                   </font>
                  </property>
                  <property name="text">
                   <string>20 - 30 Hz</string>
+                 </property>
+                 <property name="indent">
+                  <number>7</number>
                  </property>
                 </widget>
                </item>
@@ -391,7 +412,7 @@ color: rgb(66, 111, 111);</string>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>5</width>
-                     <height>20</height>
+                     <height>5</height>
                     </size>
                    </property>
                   </spacer>
@@ -438,7 +459,7 @@ color: rgb(66, 111, 111);</string>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>5</width>
-                     <height>20</height>
+                     <height>5</height>
                     </size>
                    </property>
                   </spacer>
@@ -455,8 +476,8 @@ color: rgb(66, 111, 111);</string>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>40</width>
-                   <height>15</height>
+                   <width>50</width>
+                   <height>12</height>
                   </size>
                  </property>
                 </widget>
@@ -470,17 +491,20 @@ color: rgb(66, 111, 111);</string>
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
-                   <height>20</height>
+                   <height>15</height>
                   </size>
                  </property>
                  <property name="font">
                   <font>
-                   <pointsize>10</pointsize>
+                   <pointsize>8</pointsize>
                    <bold>true</bold>
                   </font>
                  </property>
                  <property name="text">
                   <string>30 - 40 Hz</string>
+                 </property>
+                 <property name="indent">
+                  <number>7</number>
                  </property>
                 </widget>
                </item>
@@ -497,7 +521,7 @@ color: rgb(66, 111, 111);</string>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>5</width>
-                     <height>20</height>
+                     <height>5</height>
                     </size>
                    </property>
                   </spacer>
@@ -544,7 +568,7 @@ color: rgb(66, 111, 111);</string>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>5</width>
-                     <height>20</height>
+                     <height>5</height>
                     </size>
                    </property>
                   </spacer>
@@ -561,8 +585,8 @@ color: rgb(66, 111, 111);</string>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>40</width>
-                   <height>15</height>
+                   <width>50</width>
+                   <height>12</height>
                   </size>
                  </property>
                 </widget>
@@ -576,17 +600,20 @@ color: rgb(66, 111, 111);</string>
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
-                   <height>20</height>
+                   <height>15</height>
                   </size>
                  </property>
                  <property name="font">
                   <font>
-                   <pointsize>10</pointsize>
+                   <pointsize>8</pointsize>
                    <bold>true</bold>
                   </font>
                  </property>
                  <property name="text">
                   <string>40 - 50 Hz</string>
+                 </property>
+                 <property name="indent">
+                  <number>7</number>
                  </property>
                 </widget>
                </item>
@@ -603,7 +630,7 @@ color: rgb(66, 111, 111);</string>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>5</width>
-                     <height>20</height>
+                     <height>5</height>
                     </size>
                    </property>
                   </spacer>
@@ -650,7 +677,7 @@ color: rgb(66, 111, 111);</string>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>5</width>
-                     <height>20</height>
+                     <height>5</height>
                     </size>
                    </property>
                   </spacer>
@@ -667,8 +694,8 @@ color: rgb(66, 111, 111);</string>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>40</width>
-                   <height>15</height>
+                   <width>50</width>
+                   <height>12</height>
                   </size>
                  </property>
                 </widget>
@@ -682,17 +709,20 @@ color: rgb(66, 111, 111);</string>
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
-                   <height>20</height>
+                   <height>15</height>
                   </size>
                  </property>
                  <property name="font">
                   <font>
-                   <pointsize>10</pointsize>
+                   <pointsize>8</pointsize>
                    <bold>true</bold>
                   </font>
                  </property>
                  <property name="text">
                   <string>50 - 60 Hz</string>
+                 </property>
+                 <property name="indent">
+                  <number>7</number>
                  </property>
                 </widget>
                </item>
@@ -709,7 +739,7 @@ color: rgb(66, 111, 111);</string>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>5</width>
-                     <height>20</height>
+                     <height>5</height>
                     </size>
                    </property>
                   </spacer>
@@ -756,7 +786,7 @@ color: rgb(66, 111, 111);</string>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>5</width>
-                     <height>20</height>
+                     <height>5</height>
                     </size>
                    </property>
                   </spacer>
@@ -773,8 +803,8 @@ color: rgb(66, 111, 111);</string>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>40</width>
-                   <height>15</height>
+                   <width>50</width>
+                   <height>12</height>
                   </size>
                  </property>
                 </widget>
@@ -788,17 +818,20 @@ color: rgb(66, 111, 111);</string>
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
-                   <height>20</height>
+                   <height>15</height>
                   </size>
                  </property>
                  <property name="font">
                   <font>
-                   <pointsize>10</pointsize>
+                   <pointsize>8</pointsize>
                    <bold>true</bold>
                   </font>
                  </property>
                  <property name="text">
                   <string>60 - 70 Hz</string>
+                 </property>
+                 <property name="indent">
+                  <number>7</number>
                  </property>
                 </widget>
                </item>
@@ -815,7 +848,7 @@ color: rgb(66, 111, 111);</string>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>5</width>
-                     <height>20</height>
+                     <height>5</height>
                     </size>
                    </property>
                   </spacer>
@@ -862,7 +895,7 @@ color: rgb(66, 111, 111);</string>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>5</width>
-                     <height>20</height>
+                     <height>5</height>
                     </size>
                    </property>
                   </spacer>
@@ -879,8 +912,8 @@ color: rgb(66, 111, 111);</string>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>40</width>
-                   <height>15</height>
+                   <width>50</width>
+                   <height>12</height>
                   </size>
                  </property>
                 </widget>
@@ -894,17 +927,20 @@ color: rgb(66, 111, 111);</string>
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
-                   <height>20</height>
+                   <height>15</height>
                   </size>
                  </property>
                  <property name="font">
                   <font>
-                   <pointsize>10</pointsize>
+                   <pointsize>8</pointsize>
                    <bold>true</bold>
                   </font>
                  </property>
                  <property name="text">
                   <string>70 - 80 Hz</string>
+                 </property>
+                 <property name="indent">
+                  <number>7</number>
                  </property>
                 </widget>
                </item>
@@ -921,7 +957,7 @@ color: rgb(66, 111, 111);</string>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>5</width>
-                     <height>20</height>
+                     <height>5</height>
                     </size>
                    </property>
                   </spacer>
@@ -968,7 +1004,7 @@ color: rgb(66, 111, 111);</string>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>5</width>
-                     <height>20</height>
+                     <height>5</height>
                     </size>
                    </property>
                   </spacer>
@@ -985,8 +1021,8 @@ color: rgb(66, 111, 111);</string>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>40</width>
-                   <height>15</height>
+                   <width>50</width>
+                   <height>12</height>
                   </size>
                  </property>
                 </widget>
@@ -1000,17 +1036,20 @@ color: rgb(66, 111, 111);</string>
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
-                   <height>20</height>
+                   <height>15</height>
                   </size>
                  </property>
                  <property name="font">
                   <font>
-                   <pointsize>10</pointsize>
+                   <pointsize>8</pointsize>
                    <bold>true</bold>
                   </font>
                  </property>
                  <property name="text">
                   <string>80 - 90 Hz</string>
+                 </property>
+                 <property name="indent">
+                  <number>7</number>
                  </property>
                 </widget>
                </item>
@@ -1027,7 +1066,7 @@ color: rgb(66, 111, 111);</string>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>5</width>
-                     <height>20</height>
+                     <height>5</height>
                     </size>
                    </property>
                   </spacer>
@@ -1074,7 +1113,7 @@ color: rgb(66, 111, 111);</string>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>5</width>
-                     <height>20</height>
+                     <height>5</height>
                     </size>
                    </property>
                   </spacer>
@@ -1091,8 +1130,8 @@ color: rgb(66, 111, 111);</string>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>40</width>
-                   <height>15</height>
+                   <width>50</width>
+                   <height>12</height>
                   </size>
                  </property>
                 </widget>
@@ -1106,17 +1145,20 @@ color: rgb(66, 111, 111);</string>
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
-                   <height>20</height>
+                   <height>15</height>
                   </size>
                  </property>
                  <property name="font">
                   <font>
-                   <pointsize>10</pointsize>
+                   <pointsize>8</pointsize>
                    <bold>true</bold>
                   </font>
                  </property>
                  <property name="text">
                   <string>90 - 100 Hz</string>
+                 </property>
+                 <property name="indent">
+                  <number>7</number>
                  </property>
                 </widget>
                </item>
@@ -1133,7 +1175,7 @@ color: rgb(66, 111, 111);</string>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>5</width>
-                     <height>20</height>
+                     <height>5</height>
                     </size>
                    </property>
                   </spacer>
@@ -1180,7 +1222,7 @@ color: rgb(66, 111, 111);</string>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>5</width>
-                     <height>20</height>
+                     <height>5</height>
                     </size>
                    </property>
                   </spacer>
@@ -1197,9 +1239,21 @@ color: rgb(66, 111, 111);</string>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>40</width>
-                   <height>15</height>
+                   <width>50</width>
+                   <height>12</height>
                   </size>
+                 </property>
+                 <property name="autoFillBackground">
+                  <bool>true</bool>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::Box</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <property name="segmentStyle">
+                  <enum>QLCDNumber::Filled</enum>
                  </property>
                 </widget>
                </item>
@@ -1308,6 +1362,9 @@ color: rgb(66, 111, 111);</string>
              </item>
              <item>
               <widget class="QSlider" name="outputProgressSlider">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt; color:#000000;&quot;&gt;Output audio progress bar&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="maximum">
                 <number>100</number>
                </property>
@@ -1338,7 +1395,7 @@ color: rgb(66, 111, 111);</string>
                 </size>
                </property>
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt; color:#000000;&quot;&gt;Mute output signal sound&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt; color:#000000;&quot;&gt;Mute/Unmute output signal sound&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">background-color: rgb(238, 238, 238);</string>
@@ -1355,6 +1412,9 @@ color: rgb(66, 111, 111);</string>
                  <width>16777215</width>
                  <height>24</height>
                 </size>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt; color:#000000;&quot;&gt;Change output signal volume&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="readOnly">
                 <bool>false</bool>
@@ -1448,6 +1508,9 @@ color: rgb(66, 111, 111);</string>
                </property>
                <property name="cursor">
                 <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt; color:#000000;&quot;&gt;Select signal mode&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="whatsThis">
                 <string/>
@@ -1646,7 +1709,7 @@ selection-background-color: rgb(72, 60, 50);</string>
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt; color:#000000;&quot;&gt;Play/Pause&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt; color:#000000;&quot;&gt;Stop Signal&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">background-color: rgb(238, 238, 238);</string>
@@ -1809,6 +1872,9 @@ selection-background-color: rgb(72, 60, 50);</string>
                <property name="cursor">
                 <cursorShape>ClosedHandCursor</cursorShape>
                </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt; color:#000000;&quot;&gt;Control speed of audio file&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="inputMethodHints">
                 <set>Qt::ImhDigitsOnly</set>
                </property>
@@ -1896,6 +1962,9 @@ selection-background-color: rgb(72, 60, 50);</string>
                </property>
                <property name="cursor">
                 <cursorShape>OpenHandCursor</cursorShape>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt; color:#000000;&quot;&gt;Shift to smoothing window&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">background-color: rgb(238, 238, 238);
@@ -2038,6 +2107,9 @@ color: rgb(13, 13, 13);</string>
              </item>
              <item>
               <widget class="QSlider" name="originalProgressSlider">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt; color:#000000;&quot;&gt;Input audio progress bar&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="maximum">
                 <number>100</number>
                </property>
@@ -2071,7 +2143,7 @@ color: rgb(13, 13, 13);</string>
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt; color:#000000;&quot;&gt;Mute original signal sound&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt; color:#000000;&quot;&gt;Mute/Unmute original signal sound&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">background-color: rgb(238, 238, 238);</string>
@@ -2093,6 +2165,9 @@ color: rgb(13, 13, 13);</string>
                 <font>
                  <bold>false</bold>
                 </font>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt; color:#000000;&quot;&gt;Change original signal volume&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="wrapping">
                 <bool>false</bool>
@@ -2227,6 +2302,9 @@ color: rgb(66, 111, 111);</string>
                     <property name="acceptDrops">
                      <bool>false</bool>
                     </property>
+                    <property name="toolTip">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt; color:#000000;&quot;&gt;Change signal mean&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
                     <property name="autoFillBackground">
                      <bool>false</bool>
                     </property>
@@ -2322,6 +2400,9 @@ color: rgb(66, 111, 111);</string>
                     </property>
                     <property name="acceptDrops">
                      <bool>false</bool>
+                    </property>
+                    <property name="toolTip">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt; color:#000000;&quot;&gt;Change signal standard deviation&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                     <property name="autoFillBackground">
                      <bool>false</bool>
@@ -2529,6 +2610,9 @@ color: rgb(66, 111, 111);</string>
                <property name="cursor">
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt; color:#000000;&quot;&gt;Select smoothing mode&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="whatsThis">
                 <string/>
                </property>
@@ -2661,9 +2745,10 @@ selection-background-color: rgb(72, 60, 50);</string>
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionOpenSignal"/>
-    <addaction name="actionAddAnimalSounds"/>
-    <addaction name="actionAddInstrumentsSounds"/>
+    <addaction name="actionOpenUniformSignal"/>
+    <addaction name="actionOpenAnimalSounds"/>
+    <addaction name="actionOpenInstrumentsSounds"/>
+    <addaction name="actionOpenECGSignal"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -2695,19 +2780,24 @@ selection-background-color: rgb(72, 60, 50);</string>
     <string>A7a</string>
    </property>
   </action>
-  <action name="actionOpenSignal">
+  <action name="actionOpenUniformSignal">
    <property name="text">
-    <string>Open Signal</string>
+    <string>Add Uniform Signal</string>
    </property>
   </action>
-  <action name="actionAddAnimalSounds">
+  <action name="actionOpenAnimalSounds">
    <property name="text">
     <string>Add Animal Sounds</string>
    </property>
   </action>
-  <action name="actionAddInstrumentsSounds">
+  <action name="actionOpenInstrumentsSounds">
    <property name="text">
     <string>Add Instruments Sounds</string>
+   </property>
+  </action>
+  <action name="actionOpenECGSignal">
+   <property name="text">
+    <string>Add ECG Signal</string>
    </property>
   </action>
  </widget>

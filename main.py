@@ -28,6 +28,7 @@ class MainApp(QMainWindow, FORM_CLASS):
         self.outputSpectrogramWidget.setVisible(1)
         self.spectrogramRadioButton.setChecked(True)
         self.stopButton.setEnabled(0)
+        self.horizontalLayout_67.setEnabled(False)
 
 
         # Set default tab to Equalizer
@@ -162,13 +163,15 @@ class MainApp(QMainWindow, FORM_CLASS):
         self.elapsedTime = 0 
         self.originalSignalDuration = 0 
         self.outputSignalDuration = 0 
+        self.uniformSignals = []#new
         self.animalSounds = [] #new
         self.musicTracks = []#new
-        self.uniformSignals = []#new
         self.ecgSignals = []#new
         self.currentVolume = 50#new
         self.mediaDuration = 0 
         self.mediaPausePosition = 0
+        self.playheadLineOriginal=0
+        self.playheadLineOutput=0
 
         # global stopped
         # stopped = False
@@ -190,9 +193,10 @@ class MainApp(QMainWindow, FORM_CLASS):
 
 
         ############## Buttons and checkboxes connections ##############
-        self.actionOpenSignal.triggered.connect(self.openFile)
-        self.actionAddAnimalSounds.triggered.connect(self.addAnimalSounds) #new
-        self.actionAddInstrumentsSounds.triggered.connect(self.addInstrumentsSounds) #new
+        self.actionOpenUniformSignal.triggered.connect(self.openUniformSignal)
+        self.actionOpenAnimalSounds.triggered.connect(self.openAnimalSounds) #new
+        self.actionOpenInstrumentsSounds.triggered.connect(self.openInstrumentsSounds) #new
+        self.actionOpenECGSignal.triggered.connect(self.openMedicalSignal) #new
         self.playPauseButton.clicked.connect(self.playPauseToggling)
         self.muteOriginalButton.clicked.connect(self.toggleMuteOriginal)
         self.muteOutputButton.clicked.connect(self.toggleMuteOutput)
@@ -214,32 +218,107 @@ class MainApp(QMainWindow, FORM_CLASS):
         self.originalVolumeSpinBox.valueChanged[int].connect(lambda : self.originalVolumeChange())
         self.stopButton.clicked.connect(self.stopMedia)
         self.replayButton.clicked.connect(self.replayMedia)
-        self.panButton.clicked.connect(self.panSignal)#new not yet
 
         ############## Buttons and checkboxes connections ##############
 
-    def panSignal(self):
-        # Function to load an MP3 file and plot the signal on originalSignalWidget
-        mp3_file_path = r'C:\Raghda\dsp\task3\animalsSounds\seaLionSound.mp3'
+    
 
-        # Set the PYDUB_FFPROBE environment variable
-        os.environ["PYDUB_FFPROBE"] = r'C:\Program Files (x86)\ffmpeg-6.0.1\fftools\ffprobe.exe'
 
-        # Load the MP3 file using pydub
-        audio = AudioSegment.from_mp3(mp3_file_path)
+    def openUniformSignal(self): #done
+            file_name, _= QFileDialog.getOpenFileName(self, "Open Uniform Signal File", "", "Signal Files (*.csv);;All Files (*)")
+            self.audioListWidget.clear() 
+            self.clearWidgets()
+            if file_name:
+                    ext = file_name.split(".")[-1]
+                    if ext == 'csv':
+                        df = pd.read_csv(file_name)
+                        list_of_columns = df.columns
+                        time = df[list_of_columns[0]].to_numpy()
+                        data = df[list_of_columns[1]].to_numpy()
+                        max_freq = (1 / (time[1] - time[0])) / 2 
+                        sampling_frequency = 2 * max_freq
+                        self.plotOriginalSignal(time, data, sampling_frequency)
+                        self.uniformSignals.append(file_name)
+            self.modeComboBox.setCurrentText("Uniform Range Mode")
+                    
+    def openAnimalSounds(self): #done
+        files, _ = QFileDialog.getOpenFileNames(
+            self, caption='Add Animal Sounds',
+            directory='://', filter="Supported Files (*.mp3;*.m4a;*.wma;*.mpeg;*.ogg;*.MP3)"
+        )
+        # Print the files obtained from the dialog
+        # print("Files obtained:", files)
+        
+        self.audioListWidget.clear()
+        self.clearWidgets()        
+        if files:
+            for file in files:
+                self.animalSounds.append(file)
 
-        # Convert the audio to NumPy array
-        signal = np.array(audio.get_array_of_samples())
+        self.modeComboBox.setCurrentText("Animal Sounds Mode")
+        # Print the contents of self.animalSounds after adding items
+        # print("Animal Sounds after adding to animalSounds list:", self.animalSounds)
+                
+    def openInstrumentsSounds(self): #done
+        files,_=QFileDialog.getOpenFileNames(
+            self,caption='Add Music Tracks',
+            directory='://', filter="Supported Files (*.mp3;*.m4a;*.wma;*.mpeg;*.ogg;*.MP3)"
+        )
+        self.audioListWidget.clear() 
+        self.clearWidgets()
+        self.modeComboBox.setCurrentText("Musical Instruments Mode")
+        if files:
+            for file in files:
+                self.musicTracks.append(file)
 
-        # Calculate time vector based on sample rate
-        t = np.linspace(0, len(signal) / audio.frame_rate, len(signal))
+    def openMedicalSignal(self): #done
+        files,_=QFileDialog.getOpenFileNames(
+            self,caption='Add Medical Signals',
+            directory='://', filter="Supported Files (*.csv);;All Files (*)"
+        )
+        self.audioListWidget.clear() 
+        self.clearWidgets()
+        if files:
+            for file in files:
+                self.ecgSignals.append(file)
+        self.modeComboBox.setCurrentText("ECG Abnormalities Mode")
+        
+    def playMedia(self):
+        try:
+            self.currentSelection=self.audioListWidget.currentRow()
+            self.mode=self.modeComboBox.currentText()
+            if self.mode=="Uniform Range Mode":
+                self.currentSound=self.uniformSignals[self.currentSelection]
+            elif self.mode=="Animal Sounds Mode":
+                self.currentSound=self.animalSounds[self.currentSelection]
+            elif self.mode=="Musical Instruments Mode":
+                self.currentSound=self.musicTracks[self.currentSelection]
+            else:
+                self.clearWidgets() #nooo
+            
+            if self.originalProgressSlider.value()==0 :
+                
+                mediaURL=QMediaContent(QUrl.fromLocalFile(self.currentSound))
+                self.mediaPlayer.setMedia(mediaURL)
+                self.originalMediaProgress()
+                print("yarab la2")
 
-        # Plot the signal on originalSignalWidget
-        self.plotOriginalSignal(t, signal, audio.frame_rate)
 
-        # Play the audio (optional)
-        play(audio)
-
+            
+            if self.stopButton.isEnabled():
+                print("wahed")
+                self.mediaPlayer.pause()
+                self.stopButton.setEnabled(0)
+                self.playPauseButton.setIcon(self.playIcon)
+            else :
+                print("etnen")
+                self.mediaPlayer.setPosition(self.originalProgressSlider.value())
+                self.mediaPlayer.play()
+                self.stopButton.setEnabled(1)
+                self.playPauseButton.setIcon(self.pauseIcon)
+            
+        except Exception as e:
+            print(f"Play media error: {e}")            
 
     def setupSliders(self, num_sliders, option=1):
         self.sliders = []
@@ -288,10 +367,9 @@ class MainApp(QMainWindow, FORM_CLASS):
         self.frequencyWidget.clear()
         self.frequencyWidget.plot(self.frequencies, new_magnitudes, pen=pg.mkPen('b'))
         self.reconstructSignalFromFFT()    
-       
-       
+             
     def playPauseToggling(self):
-        mode=self.modeChanged()
+        mode=self.modeComboBox.currentText()
         if mode=="Uniform Range Mode":
             self.playSignal()
         else:
@@ -308,8 +386,7 @@ class MainApp(QMainWindow, FORM_CLASS):
         else:
             self.stopButton.setEnabled(0)
             self.playPauseButton.setIcon(self.playIcon)
-        
-  
+          
     def stopMedia(self):
         if self.stopButton.isEnabled():
             self.mediaPlayer.stop()
@@ -390,8 +467,7 @@ class MainApp(QMainWindow, FORM_CLASS):
         else:
             self.muteOriginalButton.setIcon(self.muteIcon)
             self.mediaPlayer.setMuted(True)  # Mute
-
-            
+       
     def toggleMuteOutput(self):
         self.outputSoundOn = not self.outputSoundOn  
 
@@ -412,94 +488,6 @@ class MainApp(QMainWindow, FORM_CLASS):
         if checked:
             self.originalSpectrogramWidget.setFixedSize(originalSize)
             self.outputSpectrogramWidget.setFixedSize(outputSize)
-    
-    def openFile(self):
-            file_name, _= QFileDialog.getOpenFileName(self, "Open Signal File", "", "Signal Files (*.csv);;All Files (*)")
-            self.audioListWidget.clear() 
-            self.clearWidgets()
-            self.modeComboBox.setCurrentText("Uniform Range Mode")
-            self.uniformRangeMode()
-            if file_name:
-                    ext = file_name.split(".")[-1]
-                    if ext == 'csv':
-                        df = pd.read_csv(file_name)
-                        list_of_columns = df.columns
-                        time = df[list_of_columns[0]].to_numpy()
-                        data = df[list_of_columns[1]].to_numpy()
-                        max_freq = (1 / (time[1] - time[0])) / 2 
-                        sampling_frequency = 2 * max_freq
-                        self.plotOriginalSignal(time, data, sampling_frequency)
-                        self.uniformSignals.append(file_name)
-                        self.audioListWidget.addItem(path.basename(file_name))
-                    # elif ext == 'wav':
-                    #
-                    #     ## ll voice files
-
-    def addAnimalSounds(self): #new
-        files,_=QFileDialog.getOpenFileNames(
-            self,caption='Add Animal Sounds',
-            directory='://', filter="Supported Files (*.mp3;*.m4a;*.wma;*.mpeg;*.ogg;*.MP3)"
-        )
-        self.audioListWidget.clear()
-        self.clearWidgets()
-        self.modeComboBox.setCurrentText("Animal Sounds Mode")
-        self.animalSoundsMode()
-        if files:
-            for file in files:
-                self.animalSounds.append(file)
-                self.audioListWidget.addItem(path.basename(file))
-                
-    def addInstrumentsSounds(self): #new
-        files,_=QFileDialog.getOpenFileNames(
-            self,caption='Add Music Tracks',
-            directory='://', filter="Supported Files (*.mp3;*.m4a;*.wma;*.mpeg;*.ogg;*.MP3)"
-        )
-        self.audioListWidget.clear() 
-        self.clearWidgets()
-        self.modeComboBox.setCurrentText("Musical Instruments Mode")
-        self.musicalInstrumentsMode()
-        if files:
-            for file in files:
-                self.musicTracks.append(file)
-                self.audioListWidget.addItem(path.basename(file))
-
-    def playMedia(self):
-        try:
-            self.currentSelection=self.audioListWidget.currentRow()
-            self.mode=self.modeChanged()
-            if self.mode=="Uniform Range Mode":
-                self.currentSound=self.uniformSignals[self.currentSelection]
-            elif self.mode=="Animal Sounds Mode":
-                self.currentSound=self.animalSounds[self.currentSelection]
-            elif self.mode=="Musical Instruments Mode":
-                self.currentSound=self.musicTracks[self.currentSelection]
-            else:
-                self.clearWidgets() #nooo
-            
-            if self.originalProgressSlider.value()==0 :
-                
-                mediaURL=QMediaContent(QUrl.fromLocalFile(self.currentSound))
-                self.mediaPlayer.setMedia(mediaURL)
-                self.originalMediaProgress()
-                print("yarab la2")
-
-
-            
-            if self.stopButton.isEnabled():
-                print("wahed")
-                self.mediaPlayer.pause()
-                self.stopButton.setEnabled(0)
-                self.playPauseButton.setIcon(self.playIcon)
-            else :
-                print("etnen")
-                self.mediaPlayer.setPosition(self.originalProgressSlider.value())
-                self.mediaPlayer.play()
-                self.stopButton.setEnabled(1)
-                self.playPauseButton.setIcon(self.pauseIcon)
-            
-        except Exception as e:
-            print(f"Play media error: {e}")
-            
 
     def plotOriginalSignal(self, t, signal, fs):
         self.originalSignalWidget.clear()
@@ -509,8 +497,8 @@ class MainApp(QMainWindow, FORM_CLASS):
         self.originalSignalWidget.setLabel('bottom', 'Time (s)')
         self.originalSignalWidget.showGrid(True, True)
         self.computeFFT(signal, fs)
-        self.playheadLineOriginal = pg.InfiniteLine(pos=self.playheadPosition, angle=90, movable=True, pen=pg.mkPen('r')) #new
-        self.originalSignalWidget.addItem(self.playheadLineOriginal) #new
+        self.playheadLineOriginal = pg.InfiniteLine(pos=self.playheadPosition, angle=90, movable=True, pen=pg.mkPen('r'))
+        self.originalSignalWidget.addItem(self.playheadLineOriginal)
 
     def computeFFT(self, signal, fs, option=1):
         N = len(signal)
@@ -533,7 +521,6 @@ class MainApp(QMainWindow, FORM_CLASS):
         self.frequencyWidget.setYRange(0, max(frequency_magnitudes) * 1.2)
         self.reconstructSignalFromFFT()
         
-
     def reconstructSignalFromFFT(self):
         t = self.originalSignalWidget.getPlotItem().listDataItems()[0].getData()[0]
         modified_signal = self.frequencyWidget.getPlotItem().listDataItems()[0].getData()[1]
@@ -610,13 +597,13 @@ class MainApp(QMainWindow, FORM_CLASS):
             self.smoothedSignalWidget.clear()
             self.compose_wave(index, t, A, f, mu, sigma)
             
-    def setLabelImage(self, label, icon, width=61, height=20, offset_x=1, offset_y=1):
+    def setLabelImage(self, label, icon, width=55, height=18, offset_x=1, offset_y=1):
         pixmap = icon.pixmap(QSize(width, height))
         label.setPixmap(pixmap)
         label.setFixedSize(width, height)  # Set the fixed size for the label
         label.setAlignment(Qt.AlignmentFlag.AlignCenter)  # Align the label to the right
 
-    def setMode(self, indices_to_hide, icons):
+    def setMode(self, indicesToHide, icons): #needs adjustments
         # Save the original size policies of the sliders, LCDs, and labels
         original_size_policies = []
 
@@ -626,7 +613,7 @@ class MainApp(QMainWindow, FORM_CLASS):
                                         (lcd.sizePolicy().horizontalPolicy(), lcd.sizePolicy().verticalPolicy())))
 
             # Check if the current index should be hidden
-            if index in indices_to_hide:
+            if index in indicesToHide:
                 slider.hide()
                 lcd.hide()
                 label.hide()
@@ -648,7 +635,7 @@ class MainApp(QMainWindow, FORM_CLASS):
         # You might also want to adjust the layout after hiding/showing the sliders and LCDs
         # self.updateGeometry()
 
-    def uniformRangeMode(self):
+    def uniformRangeMode(self): #not sure yet
         frequency_range = 10
 
         # Show all sliders
@@ -664,59 +651,90 @@ class MainApp(QMainWindow, FORM_CLASS):
             item = QListWidgetItem(signal)
             self.audioListWidget.addItem(item)
             
-    def musicalInstrumentsMode(self):
+    def musicalInstrumentsMode(self): #done
         # List of indices to hide
-        indices_to_hide = [1, 2, 4, 5, 7, 8]
+        indicesToHide = [1, 2, 4, 5, 7, 8]
         # Icons for musical instruments mode
         icons = [self.guitarIcon, self.drumsIcon, self.trumpetIcon, self.pianoIcon]
-        self.setMode(indices_to_hide, icons)
-        # self.audioListWidget.setEnabled(True)
+        self.setMode(indicesToHide, icons)
+        
         self.audioListWidget.clear()
         for track in self.musicTracks:
-            item = QListWidgetItem(track)
-            self.audioListWidget.addItem(item)
+            self.audioListWidget.addItem(track)
 
-    def animalSoundsMode(self):
+    def animalSoundsMode(self): #done
         # List of indices to hide
-        indices_to_hide = [1, 2, 4, 5, 7, 8]
+        indicesToHide = [1, 2, 4, 5, 7, 8]
         # Icons for animal sounds mode
         icons = [self.elephantIcon, self.sheepIcon, self.wolfIcon, self.seaLionIcon]
-        self.setMode(indices_to_hide, icons)
-        self.audioListWidget.setEnabled(True)
-        self.audioListWidget.clear()
-        for sound in self.animalSounds:
-            item = QListWidgetItem(sound)
-            self.audioListWidget.addItem(item)
+        self.setMode(indicesToHide, icons)
 
-    def ECGAbnormalitiesMode(self):
-        # Code for Nature Sounds Mode
-        # pass
+        # # Print the contents of self.animalSounds before adding items
+        # print("Animal Sounds before adding to audioListWidget:", self.animalSounds)
+        # # Print the contents of audioListWidget before adding items
+        # print("audioListWidget content before adding items:", [self.audioListWidget.item(i).text() for i in range(self.audioListWidget.count())])
+
+        self.audioListWidget.clear()
+        for index, sound in enumerate(self.animalSounds):
+            self.audioListWidget.addItem(sound)
+            # print(f"Added sound at index {index}: {sound}")
+
+        # # Print the contents of audioListWidget after adding items
+        # print("audioListWidget content after adding items:", [self.audioListWidget.item(i).text() for i in range(self.audioListWidget.count())])
+        # # Print the contents of self.animalSounds after adding items
+        # print("Animal Sounds after adding to audioListWidget:", self.animalSounds)
+
+    def ECGAbnormalitiesMode(self): #missing
         print("ahh yany")
 
-    def modeChanged(self):
+    def modeChanged(self): #done
         # Handle mode changes here
-        selected_mode = self.modeComboBox.currentText()
-        print(f"Selected mode: {selected_mode}")
+        selectedMode = self.modeComboBox.currentText()
+        print(f"Selected mode: {selectedMode}")
 
-        
         # Call the corresponding method based on the selected mode
-        if selected_mode == "Uniform Range Mode":
+        if selectedMode == "Uniform Range Mode":
             self.uniformRangeMode()
-        elif selected_mode == "Musical Instruments Mode":
-            self.clearWidgets()
-            self.musicalInstrumentsMode()
-        elif selected_mode == "Animal Sounds Mode":
+        elif selectedMode == "Animal Sounds Mode":
             self.clearWidgets()
             self.animalSoundsMode()
-        elif selected_mode == "ECG Abnormalities Mode":
+        elif selectedMode == "Musical Instruments Mode":
+            self.clearWidgets()
+            self.musicalInstrumentsMode()
+        elif selectedMode == "ECG Abnormalities Mode":
             self.clearWidgets()
             self.ECGAbnormalitiesMode()
-        return selected_mode
             
-    def clearWidgets(self):
+    def clearWidgets(self): #done
         self.originalSignalWidget.clear()
         self.outputSignalWidget.clear()
         self.frequencyWidget.clear()
+
+
+# ------------------------------Trials------------------------------------------------------------
+    # def extractSignal(self): 
+    #         # Function to load an MP3 file and plot the signal on originalSignalWidget
+    #         mp3_file_path = r'C:\Raghda\dsp\task3\animalsSounds\seaLionSound.mp3'
+
+    #         # Set the PYDUB_FFPROBE environment variable
+    #         os.environ["PYDUB_FFPROBE"] = r'C:\Program Files (x86)\ffmpeg-6.0.1\fftools\ffprobe.exe'
+
+    #         # Load the MP3 file using pydub
+    #         audio = AudioSegment.from_mp3(mp3_file_path)
+
+    #         # Convert the audio to NumPy array
+    #         signal = np.array(audio.get_array_of_samples())
+
+    #         # Calculate time vector based on sample rate
+    #         t = np.linspace(0, len(signal) / audio.frame_rate, len(signal))
+
+    #         # Plot the signal on originalSignalWidget
+    #         self.plotOriginalSignal(t, signal, audio.frame_rate)
+
+    #         # Play the audio (optional)
+    #         play(audio)
+    
+# ------------------------------Trials------------------------------------------------------------
 
 
 def main():

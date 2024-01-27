@@ -1244,7 +1244,7 @@ color: rgb(66, 111, 111);</string>
                   </size>
                  </property>
                  <property name="autoFillBackground">
-                  <bool>true</bool>
+                  <bool>false</bool>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::Box</enum>
@@ -1589,8 +1589,17 @@ selection-background-color: rgb(72, 60, 50);</string>
            </item>
            <item>
             <widget class="QListWidget" name="audioListWidget">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>100</height>
+              </size>
+             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt; color:#000000;&quot;&gt;Tracks stored in playlist&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="isWrapping" stdset="0">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -1710,38 +1719,6 @@ selection-background-color: rgb(72, 60, 50);</string>
                </property>
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt; color:#000000;&quot;&gt;Stop Signal&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">background-color: rgb(238, 238, 238);</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>../../hp/hp/.designer/backup/eraser.png</normaloff>../../hp/hp/.designer/backup/eraser.png</iconset>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="panButton">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>50</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt; color:#000000;&quot;&gt;Pan&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">background-color: rgb(238, 238, 238);</string>
@@ -1905,6 +1882,64 @@ selection-background-color: rgb(72, 60, 50);</string>
                  <width>16777215</width>
                  <height>25</height>
                 </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <item>
+              <widget class="QPushButton" name="constructAudioButton">
+               <property name="font">
+                <font>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(238, 238, 238);
+color: rgb(13, 13, 13);</string>
+               </property>
+               <property name="text">
+                <string>Construct Audio</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="deleteButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>31</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>31</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt; color:#000000;&quot;&gt;Delete Audio/Signal&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(238, 238, 238);</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>../../hp/hp/.designer/backup/eraser.png</normaloff>../../hp/hp/.designer/backup/eraser.png</iconset>
                </property>
               </widget>
              </item>

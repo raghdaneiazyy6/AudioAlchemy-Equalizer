@@ -8,6 +8,9 @@ Welcome to the enchanting realm of AudioAlchemy Equalizer, where the magic of di
 
 AudioAlchemy Equalizer empowers you to shape your soundscapes like never before. Whether you're a music producer striving for the perfect mix, a researcher exploring the nuances of animal communication, or a medical professional delving into the intricacies of ECG signals, this equalizer is your key to sonic alchemy.
 
+## Preview
+![Animation Gif](Demo.gif)
+
 ## Features
 
  - ### Fine-Tune Every Frequency
@@ -24,29 +27,19 @@ AudioAlchemy Equalizer empowers you to shape your soundscapes like never before.
  - ### Visualize and Customize
     Witness the magic unfold with two linked cine-signal viewers, providing a dynamic view of input and output signals. Real-time spectrograms offer a visual feast, reflecting changes in frequency components instantly. Choose from four versatile windows (Rectangle, Hamming, Hanning, and Gaussian) to add that extra touch of finesse to your audio manipulations.
 
-
-
-## Getting Started
-
-To embark on your audio journey with AudioAlchemy Equalizer, follow the steps outlined below
-
-## Demo
-
-Curious to see the magic in action? Watch our demo video and experience the transformative power of our Equalizer.
-
 ## Contributors
 
 Gratitude goes out to all team members for their valuable contributions to this project.
 
 <div align="left">
+   <a href="https://github.com/AhmeddEmad7">
+    <img src="https://github.com/AhmeddEmad7.png" width="100px" alt="@AhmeddEmad7">
+  </a>
   <a href="https://github.com/hazemzakariasaad">
     <img src="https://github.com/hazemzakariasaad.png" width="100px" alt="@hazemzakariasaad">
   </a>
   <a href="https://github.com/nourhan-ahmedd">
     <img src="https://github.com/nourhan-ahmedd.png" width="100px" alt="@nourhan-ahmedd">
-  </a>
-  <a href="https://github.com/AhmeddEmad7">
-    <img src="https://github.com/AhmeddEmad7.png" width="100px" alt="@AhmeddEmad7">
   </a>
   <a href="https://github.com/raghdaneiazyy6">
     <img src="https://github.com/raghdaneiazyy6.png" width="100px" alt="@raghdaneiazy6">
